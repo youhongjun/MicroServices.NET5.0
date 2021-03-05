@@ -1,0 +1,158 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4001
+        }
+      ],
+      "UpstreamPathTemplate": "/product"
+    },
+    {
+      "DownstreamPathTemplate": "/api/product/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4001
+        }
+      ],
+      "UpstreamPathTemplate": "/product/{id}"
+    },
+    {
+      "DownstreamPathTemplate": "/api/payment",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4002
+        }
+      ],
+      "UpstreamPathTemplate": "/payment",
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000"
+  }
+}
+//{
+//  "Routes": [
+//    {
+//      "DownstreamPathTemplate": "/api/product",
+//      "DownstreamScheme": "http",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 4001
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/product",
+//      "UpstreamHttpMethod": [ "GET" ],
+//      "AuthenticationOptions": {
+//        "AuthenticationProviderKey": "ProductAPIKey",
+//        "AllowedScopes": []
+//      }
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/payment",
+//      "DownstreamScheme": "http",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 4002
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/payment",
+//      "UpstreamHttpMethod": [ "GET" ]
+//    }
+//  ],
+//  "GlobalConfiguration": {
+//    "RateLimitOptions": {
+//      "QuotaExceededMessage": "You want more API, pay some money !!!!",
+//      "HttpStatusCode": 999
+//    }
+//  }
+//}
+////{
+////  "ReRoutes": [
+////    //product api config
+////    {
+////      "DownstreamPathTemplate": "/product/{everything}",
+////      "DownstreamScheme": "http",
+////      "DownstreamHostAndPorts": [
+////        {
+////          "Host": "localhost",
+////          "Port": 4001
+////        }
+////      ],
+////      "UpstreamPathTemplate": "/product/{everything}",
+////      "UpstreamHttpMethod": [
+////        "GET",
+////        "POST",
+////        "PUT",
+////        "DELETE"
+////      ],
+////      "AuthenticationOptions": {
+////        "AuthenticationProviderKey": "TestKey",
+////        "AllowedScopes": []
+////      },
+////      "RateLimitOptions": {
+////        "ClientWhitelist": [],
+////        "EnableRateLimiting": true,
+////        "Period": "1s",
+////        "PeriodTimespan": 1,
+////        "Limit": 1
+////      },
+////      "FileCacheOptions": {
+////        "TtlSeconds": 15,
+////        "Region": "productcaching"
+////      }
+////    },
+////    //payment api config
+////    {
+////      "DownstreamPathTemplate": "/payment/{everything}",
+////      "DownstreamScheme": "http",
+////      "DownstreamHostAndPorts": [
+////        {
+////          "Host": "localhost",
+////          "Port": 4002
+////        }
+////      ],
+////      "UpstreamPathTemplate": "/payment/{everything}",
+////      "UpstreamHttpMethod": [
+////        "GET",
+////        "POST",
+////        "PUT",
+////        "DELETE"
+////      ],
+////      "AuthenticationOptions": {
+////        "AuthenticationProviderKey": "TestKey",
+////        "AllowedScopes": []
+////      },
+////      "RateLimitOptions": {
+////        "ClientWhitelist": [],
+////        "EnableRateLimiting": true,
+////        "Period": "1s",
+////        "PeriodTimespan": 1,
+////        "Limit": 1
+////      },
+////      "FileCacheOptions": {
+////        "TtlSeconds": 15,
+////        "Region": "paymentcaching"
+////      }
+////    }
+////  ],
+////  "GlobalConfiguration": {
+
+////  }
+////}
